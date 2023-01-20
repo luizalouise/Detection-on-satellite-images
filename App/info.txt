@@ -1,0 +1,11 @@
+Aplikacja umożliwia rozpoznawanie samochodów, samolotów i statków i stadionów na zdjęciach satelitarnych.
+Istnieją dwie opcje do wyboru: Google Earth i Copernicus.
+W przypadku wybrania opcji Google Earth należy na początku wybrać zdjęcie, na którym ma zostać dokonane rozpoznawanie.
+Zdjęcie może wstawić poprzez nacisięcie przycisku "Wybierz zdjęcie", wtedy należy wybrać plik z eksploratora pliku.
+Istnieje też możliwość przeciągnięcia obrazu i upuszczenia go wewnątrz żółtej ramki. Akceptowalne są tylko pliki w formacie .jpg lub .png.
+Żeby przeprowadzić rozpoznawanie, należy nacisnąć przycisk "Detekcja obiektów". W miejscu, gdzie znajdowało się wejściowe zdjęcie zostanie
+wyświtelony obraz z zaznaczonymi rozpoznanymi obiektami. Jeśli nie uda się znaleźć żadnego obiektu, zostanie wyświetlony
+o tym komunikat. Zdjęcia można również zapisać. Należy nacisnąć przycisk "Zapisz zdjęcie" i wybrać miejsce gdzie plik ma być zapisany
+i jaką nazwę ma przyjąć.
+W przypadku wybrania opcji Copernicus należy zaznaczyć obszar na mapie, dla któego ma zostać pobrany obraz, nacisnąć przycis "Export" i "Detekcja".
+Dla tego przypadku możliwa jest detekcja tylko stadionów.

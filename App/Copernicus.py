@@ -24,8 +24,11 @@ class Copernicus(object):
         oauth = OAuth2Session(client=client)
 
         # get an authentication token
-        token = oauth.fetch_token(token_url='https://services.sentinel-hub.com/oauth/token',
-                                  client_id=client_id, client_secret=client_secret)
+        try:
+            token = oauth.fetch_token(token_url='https://services.sentinel-hub.com/oauth/token',
+                                      client_id=client_id, client_secret=client_secret)
+        except:
+            return 123
 
         json_request = {
             "input": {
@@ -79,7 +82,18 @@ class Copernicus(object):
             "POST", url_request, headers=headers_request, json=json_request
         )
 
+        sentence = str(response.content)
+        word = 'error'
+        if word in sentence:
+            im = None
+
+            if '400' in sentence:
+                im = 400
+            if '403' in sentence:
+                im = 403
+
+            return im
+
         im = Image.open(io.BytesIO(response.content))
         im.save("cop_img.png")
-        print(type(im))
         return im

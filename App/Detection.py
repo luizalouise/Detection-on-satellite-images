@@ -1,15 +1,12 @@
 import os
 import cv2
 from PIL import Image
-from PIL.ImageQt import ImageQt
-
 from PyQt5 import QtGui
-
 
 
 class Detection(object):
 
-    def making_detection(self, filePath, model) :
+    def making_detection(self, filePath, model):
 
         img = filePath
 
@@ -21,7 +18,7 @@ class Detection(object):
 
             os.chdir(head_tail[0])
 
-            image = cv2.imread(img)  # dopisane 1
+            image = cv2.imread(img)
 
             results = self.score_frame(results)
 
@@ -36,9 +33,7 @@ class Detection(object):
             qim = QtGui.QImage(data, im.size[0], im.size[1], QtGui.QImage.Format_RGBA8888)
             pix_img = QtGui.QPixmap.fromImage(qim)
 
-
             return pix_img
-
 
         else:
             return None
@@ -46,9 +41,6 @@ class Detection(object):
     def score_frame(self, results):
 
         labels, cord = results.xyxyn[0][:, -1].numpy(), results.xyxyn[0][:, :-1].numpy()
-        print("s")
-        print(type(labels))
-        print(type(cord))
         return labels, cord
 
     def class_to_label(self, x, model):
@@ -62,9 +54,6 @@ class Detection(object):
             classes[int(x)] = 'stadion'
         elif classes[int(x)] == 'plane':
             classes[int(x)] = 'samolot'
-
-        print("c")
-        print(type(classes[int(x)]))
 
         return classes[int(x)]
 
@@ -85,6 +74,4 @@ class Detection(object):
                 text = self.class_to_label(labels[i], model) + " " + str(round(row[4], 2))
                 cv2.putText(frame, text, (x1, y1), cv2.FONT_HERSHEY_SIMPLEX, 0.7, bgr, 2)
 
-        print("p")
-        print(type(frame))
         return frame
